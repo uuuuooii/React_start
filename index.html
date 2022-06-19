@@ -32,18 +32,74 @@
     <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
     <script type="text/javascript">
-        // console.log(React);
-        // console.log(ReactDOM);
+        console.log(React);
+        console.log(ReactDOM);
 
-        const root = document.querySelector('#root');
-        const btn_plus = document.querySelector('#btn_plus');
 
-        let i = 0;
-        root.innerHTML = '<p>init : 0</p>';
+        // javascript
+        // const root = document.querySelector('#root');
+        // const btn_plus = document.querySelector('#btn_plus');
 
-        btn_plus.addEventListener('click', () => {
-            root.innerHTML = `<p>init : ${++i} </p>`;
-        })
+        // 초기값
+        // let i = 0;
+        // root.innerHTML = '<p>init : 0</p>';
+
+        // btn_plus.addEventListener('click', () => {
+        //     root.innerHTML = `<p>init : ${++i} </p>`;
+        // })
+
+
+        // component
+        // 초기값
+        // const component = {
+        //     message: 'init',
+        //     count: 0,
+        //     render() {
+        //         return `<p>${this.message} : ${this.count}</p>`;
+        //     }
+        // };
+
+        // function render(rootElement, component) {
+        //     rootElement.innerHTML = component.render();
+        // } 
+
+        // // 초기화 
+        // render(document.querySelector('#root'), component);
+
+        // // 버튼 이벤트
+        // document.querySelector('#btn_plus').addEventListener('click', () => {
+        //     component.message = 'update';
+        //     component.count = component.count + 1;
+
+        //     render(document.querySelector('#root'), component);
+        // })
+
+
+        
+        // React
+
+        // <p>
+        const Component = props => {
+            return React.createElement('p', null, `${props.message} : ${props.count}`);
+        }
+
+        ReactDOM.render(
+            React.createElement(Component, {message: 'init', count: 0}, null) , 
+            document.querySelector("#root")
+        );
+
+        //버튼 이벤트
+        document.querySelector('#btn_plus').addEventListener('click', () => {
+            ReactDOM.render(
+            React.createElement(
+                Component, 
+                {message: 'update', count: 10}, 
+                null
+            ), 
+            document.querySelector("#root")
+        );
+    });
+
     </script>
 </body>
 </html>
